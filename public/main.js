@@ -29,7 +29,7 @@ $(document).ready(function () {
     }
 
 
-
+    checkSyncStatus();
     setInterval(checkSyncStatus, 30000);
 
 });
