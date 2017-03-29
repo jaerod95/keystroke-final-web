@@ -7,8 +7,23 @@ a {
   color: #00B7FF;
 }
 
-#syncStatus, algorithmStatus{
+#syncStatus, #algorithmStatus{
   background: lightskyblue;
   width: 50px;
   height: 50px;
+  margin: 10px;
 }
+
+.section {
+  max-width: 800px;
+  background: #eee;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 25px;
+}
+
+.btn {
+  margin: 10px;
+}
+
+h1 { font-family: 'Trocchi', serif; font-size: 25px; font-weight: normal; margin: 0; }

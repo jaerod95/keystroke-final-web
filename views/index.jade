@@ -2,18 +2,18 @@ extends layout
 
 block content
   .section    
-    h1 Click below to set the database to resync the data from mLab. (This could take up to 15 minutes). If the square is red, then the database is currently resyncing data. If the square is green, then the data has been synced successfully from the last time the sync command was ran..
+    h1 Click below to set the database to resync the data from mLab. (This could take up to 15 minutes). If the square is red, then the database is currently resyncing data. If the square is green, then the data has been synced successfully from the last time the sync command was ran.
       #syncStatus
     button.btn#syncButton Run
   .section
     h1 Click below to download the synced data. It is recommended you do this only when the sync block is green.
     button.btn#getDataButton Get Data
   .section
-    h1 Click below to run the algorithms on the data.
+    h1 Click below to run the algorithms on the data. If the square is red, then the database is currently running the algorithms. If the square is green, then algorithms have completed successfully since the command was ran.
       #algorithmStatus
     button.btn#runAlgorithms Run Algorithms
   .section
-    h1 Click below to download the processed algorithm results. It is recommended you do this only when the sync block is green.
+    h1 Click below to download the processed algorithm results. It is recommended you do this only when the algorithm box is green.
     button.btn#getAlgorithm Data Get Results
 block scripts
   script(src="/main.js")
