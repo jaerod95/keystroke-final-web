@@ -15,8 +15,27 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.get('/api/v1/sync-status', function(req, res, next) {
+  fs.readFile(path.join(__dirname, '..', 'sync_status.json'), 'utf8', function(err, file) {
+    res.send(JSON.parse(file));
+  });
+});
+
+router.post('api/v1/sync-status', function (req, res, next) {
+
+});
+
 router.post('/api/v1/download-database', function (req, res, next) {
+  var file = JSON.parse(fs.readFileSync('sync_status.json', 'utf8'));
+  console.log(file);
+  console.log(file.sync)
+  if (!file.sync) {
+    res.send(200);
+  } else {
+  fs.writeFileSync("sync_status.json", JSON.stringify({"sync": false}));
   keystroke_database();
+  res.send(200);
+  }
 });
 
 router.get('/api/v1/get-raw-data', function (req, res, next) {

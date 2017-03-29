@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+#syncStatus {
+  background: lightskyblue;
+  width: 50px;
+  height: 50px;
+}
