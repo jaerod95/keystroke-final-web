@@ -1,5 +1,36 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+block content    
+  h1 Click below to set the database to resync the data from mLab.
+  button.btn#syncButton Run
+  h1 Click below to downlaod the synced data.
+  button.btn#getDataButton Get Data
+  script.
+    $('#syncButton').click(function (e) {
+    $.ajax({
+      url: "/api/v1/download-database",
+      type: "post",
+      success: function(err, data) {
+        console.log(data);
+      },
+      error: function(err) {
+        console.log(error);
+      }
+      });
+    });
+    document.getElementById('getDataButton').addEventListener('click', function (e) {
+    console.log('button clicked');
+    $.ajax({
+      url: "/api/v1/get-raw-data",
+      type: "get",
+      success: function(data, status, r) {
+        console.log('this ran');
+        var blob = new Blob([data], {type: "application/x-zip-compressed"});
+        FileReader.saveAs(blob, "raw.zip");
+        
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+    });

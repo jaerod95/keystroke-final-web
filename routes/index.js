@@ -27,7 +27,16 @@ router.get('/api/v1/get-raw-data', function (req, res, next) {
   output.on('close', function () {
     console.log(archive.pointer() + ' total bytes');
     console.log('archiver has been finalized and the output file descriptor has closed.');
-    res.sendFile('raw.zip');
+    var options = {
+      root: path.join(__dirname, "..")
+    }
+    res.sendFile('raw.zip', options, function(err) {
+      if (err) {
+        next(err);
+      } else {
+        console.log('Sent:'  + 'raw.zip');
+      }
+    });
   });
 
   archive.on('error', function (err) {
